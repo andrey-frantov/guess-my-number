@@ -18,24 +18,25 @@
     <header>
         <button class="btn again">Again!</button>
         <span class="guess-range">&ltBetween 1 and 20&gt</span>
-
-        <div class="container"><h1>Guess My Number!</h1></div>
     </header>
 
-    <hr />
-    <div class="question-box">?</div>
+    <div class="title"><h1>Guess My Number!</h1></div>
+
+    <div class="divider">
+        <hr />
+        <div class="question-box">?</div>
+    </div>
+
 
     <main>
-        <div class="container">
-            <div class="col">
-                <input type="text" class="guess-num">
-                <button class="btn check">Check!</button>
-            </div>
-            <div class="col">
-                <p>Start guessing...</p>
-                <p class="score">Score: %SCORE%</p>
-                <div class="highscore">Highscore: %HIGHSCORE%</div>
-            </div>
+        <div class="inputs">
+            <input type="text" class="guess-num">
+            <button class="btn check">Check!</button>
+        </div>
+        <div class="scores">
+            <p>Start guessing...</p>
+            <p class="score">Score: %SCORE%</p>
+            <div class="highscore">Highscore: %HIGHSCORE%</div>
         </div>
     </main>
 
