@@ -16,28 +16,29 @@
   </head>
   <body>
     <header>
-        <button class="btn again">Again!</button>
-        <span class="guess-range">&ltBetween 1 and 20&gt</span>
+      <button class="btn again">Again!</button>
+      <span class="guess-range">&ltBetween 1 and 20&gt</span>
     </header>
 
     <div class="title"><h1>Guess My Number!</h1></div>
 
     <div class="divider">
-        <hr />
-        <div class="question-box">?</div>
+      <hr />
+      <div class="question-box">?</div>
     </div>
 
-
     <main>
-        <div class="inputs">
-            <input type="text" class="guess-num">
-            <button class="btn check">Check!</button>
+      <div class="inputs">
+        <input type="number" min="1" max="20" name="num-input" class="num-input" />
+        <button class="btn check">Check!</button>
+      </div>
+      <div class="scores">
+        <p>Start guessing...</p>
+        <div>
+          <p class="score">Score: %SCORE%</p>
+          <p class="highscore">Highscore: %HIGHSCORE%</p>
         </div>
-        <div class="scores">
-            <p>Start guessing...</p>
-            <p class="score">Score: %SCORE%</p>
-            <div class="highscore">Highscore: %HIGHSCORE%</div>
-        </div>
+      </div>
     </main>
 
     <script src="app.js" async defer></script>
