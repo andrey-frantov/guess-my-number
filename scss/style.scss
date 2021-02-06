@@ -38,8 +38,13 @@ header {
     font-size: 1.6rem;
     vertical-align: middle;
 
-    :focus {
+    &:focus {
         outline: none;
+    }
+
+    &:hover{
+        background-color: darken($primary-light-color, 15%);
+        cursor: pointer;
     }
 }
 
@@ -107,6 +112,4 @@ main {
         justify-content: space-between;
         text-align: left;
     }
-
-
 }
