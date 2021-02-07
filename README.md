@@ -1,2 +1,2 @@
 # guess-my-number
-Simple game to train web stack skills.
+A simple game to train web stack skills. Go web dev!
