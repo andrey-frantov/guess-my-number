@@ -42,7 +42,10 @@ const updateHighScore = () => {
 /* VIEW CONTROLLERS */
 const updateScoreUI = () => {
     if (gameData.score < 1) {
-        messageString.textContent = texts.gameOver.replace('%RANDOM_NUM%', gameData.randomNum);
+        messageString.textContent = texts.gameOver.replace(
+            '%RANDOM_NUM%',
+            gameData.randomNum
+        );
     }
 
     scoreString.textContent = `Score: ${gameData.score}`;
@@ -52,20 +55,22 @@ const updateHighScoreUI = () => {
     highScoreString.textContent = `Highscore: ${gameData.highScore}`;
 };
 
-const validateInput = (num) => {
-    if (num <= 0 || num > 20) {
-        messageString.textContent = texts.wrongValue;
-        numInput.value = null;
-        numInput.focus();
-        return;
-    }
+const updateMessageUI = (text) => {
+    messageString.textContent = text;
 };
 
 const clearInputAndFocus = () => {
     numInput.value = null;
     numInput.focus();
-}
+};
 
+const validateInput = (num) => {
+    if (num <= 0 || num > 20) {
+        messageString.textContent = texts.wrongValue;
+        clearInputAndFocus();
+        return;
+    }
+};
 
 /* GAME CONTROLLER */
 const startGame = () => {
@@ -73,7 +78,7 @@ const startGame = () => {
     updateScoreUI();
     gameData.randomNum = getRandomNum();
     console.log(gameData.randomNum); // Todo: Remove after testing
-    messageString.textContent = texts.startGame;
+    updateMessageUI(texts.startGame);
     clearInputAndFocus();
 };
 
@@ -82,17 +87,17 @@ const compareNums = () => {
     validateInput(userNum);
 
     if (userNum > gameData.randomNum) {
-        messageString.textContent = texts.wrongGuessHigh;
+        updateMessageUI(texts.wrongGuessHigh);
         updateScore();
         updateScoreUI();
         clearInputAndFocus();
     } else if (userNum < gameData.randomNum) {
-        messageString.textContent = texts.wrongGuessLow;
+        updateMessageUI(texts.wrongGuessLow);
         updateScore();
         updateScoreUI();
         clearInputAndFocus();
     } else if (userNum == gameData.randomNum) {
-        messageString.textContent = texts.rightGuess;
+        updateMessageUI(texts.rightGuess);
         updateHighScore();
         updateHighScoreUI();
         clearInputAndFocus();
