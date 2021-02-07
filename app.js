@@ -7,7 +7,7 @@ let gameData = {
 
 const texts = {
     startGame: 'Start guessing...',
-    wrongValue: 'Number out of range.',
+    wrongValue: 'Value out of range.',
     wrongGuessLow: 'To low!',
     wrongGuessHigh: 'To high!',
     rightGuess: `You guessed right!`,
@@ -22,7 +22,8 @@ const messageString = document.querySelector('.message-text');
 const scoreString = document.querySelector('.score');
 const highScoreString = document.querySelector('.highscore');
 
-/* DATA CONTROLLER */
+
+/* DATA CONTROLLERS */
 const getRandomNum = () => {
     return Math.floor(Math.random() * 20 + 1);
 };
@@ -65,14 +66,14 @@ const clearInputAndFocus = () => {
 };
 
 const validateInput = (num) => {
-    if (num <= 0 || num > 20) {
-        messageString.textContent = texts.wrongValue;
+    if (num <= 0 || num > 20 || num == '') {
+        updateMessageUI(texts.wrongValue);
         clearInputAndFocus();
-        return;
-    }
+        return false;
+    } else return true;
 };
 
-/* GAME CONTROLLER */
+/* GAME CONTROLLERS */
 const startGame = () => {
     gameData.score = 20;
     updateScoreUI();
@@ -84,7 +85,7 @@ const startGame = () => {
 
 const compareNums = () => {
     const userNum = numInput.value;
-    validateInput(userNum);
+    if (!validateInput(userNum)) return;
 
     if (userNum > gameData.randomNum) {
         updateMessageUI(texts.wrongGuessHigh);
