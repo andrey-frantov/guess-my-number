@@ -21,6 +21,7 @@ const numInput = document.querySelector('.num-input');
 const messageString = document.querySelector('.message-text');
 const scoreString = document.querySelector('.score');
 const highScoreString = document.querySelector('.highscore');
+const body = document.querySelector('body');
 
 
 /* DATA CONTROLLERS */
@@ -47,6 +48,7 @@ const updateScoreUI = () => {
             '%RANDOM_NUM%',
             gameData.randomNum
         );
+        body.style.backgroundColor = '#c96e6e';
     }
 
     scoreString.textContent = `Score: ${gameData.score}`;
@@ -75,6 +77,7 @@ const validateInput = (num) => {
 
 /* GAME CONTROLLERS */
 const startGame = () => {
+    body.style.backgroundColor = '#1F1F1F';
     gameData.score = 20;
     updateScoreUI();
     gameData.randomNum = getRandomNum();
@@ -98,6 +101,7 @@ const compareNums = () => {
         updateScoreUI();
         clearInputAndFocus();
     } else if (userNum == gameData.randomNum) {
+        body.style.backgroundColor = '#5CBA42';
         updateMessageUI(texts.rightGuess);
         updateHighScore();
         updateHighScoreUI();
