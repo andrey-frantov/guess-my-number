@@ -49,8 +49,8 @@ const updateScoreUI = () => {
             gameData.randomNum
         );
         body.style.backgroundColor = '#c96e6e';
+        checkBtn.disabled = true;
     }
-
     scoreString.textContent = `Score: ${gameData.score}`;
 };
 
@@ -81,8 +81,8 @@ const startGame = () => {
     gameData.score = 20;
     updateScoreUI();
     gameData.randomNum = getRandomNum();
-    console.log(gameData.randomNum); // Todo: Remove after testing
     updateMessageUI(texts.startGame);
+    checkBtn.disabled = false;
     clearInputAndFocus();
 };
 
@@ -102,6 +102,7 @@ const compareNums = () => {
         clearInputAndFocus();
     } else if (userNum == gameData.randomNum) {
         body.style.backgroundColor = '#5CBA42';
+        checkBtn.disabled = true;
         updateMessageUI(texts.rightGuess);
         updateHighScore();
         updateHighScoreUI();
